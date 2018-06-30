@@ -7,6 +7,11 @@ from employees
 where salary < (select avg(salary)
                 from employees);
 
+select *
+from employees emp, (select avg(salary) avgsal
+                    from employees) e
+where emp.salary < e.avgsal;
+
 /*문제2. 
 각 부서별로 최고의 급여를 받는 사원의 직원번호(employee_id), 성(last_name)과 급여(salary)
 부서번호(department_id)를 조회하세요 단 조회결과는 급여의 내림차순으로 정렬되어 나타나야 합니다. 
